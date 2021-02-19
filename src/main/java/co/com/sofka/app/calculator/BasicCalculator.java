@@ -11,4 +11,23 @@ public class BasicCalculator {
         logger.info( "Summing {} + {}", number1, number2 );
         return number1 + number2;
     }
+
+    public Long subtrac(Long number1, Long number2) {
+        logger.info( "Summing {} - {}", number1, number2 );
+        return number1 - number2;
+    }
+
+    public Long mult(Long number1, Long number2) {
+        logger.info( "Summing {} * {}", number1, number2 );
+        return number1 * number2;
+    }
+    public Float div(Long number1, Long number2) {
+        Float result = 0f;
+        try {
+            result = Float.valueOf(number1/number2);
+        }catch (ArithmeticException a){
+            logger.info("la división por cero es indeterminado "+a);
+        }
+        return result;
+    }
 }
