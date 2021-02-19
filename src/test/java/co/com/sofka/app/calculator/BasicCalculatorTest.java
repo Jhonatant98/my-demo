@@ -40,7 +40,7 @@ class BasicCalculatorTest {
     }
     //TEST SUBTRACTION
     @Test
-    @DisplayName("Testing sum: 1-1=0")
+    @DisplayName("Testing subtraction: 1-1=0")
     void subtrac() {
         // Arrange
         Long number1 = 1L;
@@ -68,7 +68,7 @@ class BasicCalculatorTest {
     }
     //TEST MULTIPLICATION
     @Test
-    @DisplayName("Testing sum: 1*1=1")
+    @DisplayName("Testing multiplication: 1*1=1")
     void mult() {
         // Arrange
         Long number1 = 1L;
@@ -82,7 +82,7 @@ class BasicCalculatorTest {
         assertEquals(expectedValue, result);
     }
 
-    @DisplayName("Testing several subtraction")
+    @DisplayName("Testing several multiplication")
     @ParameterizedTest(name = "{0} * {1} = {2}")
     @CsvSource({
             "0,    1,   0",
@@ -93,5 +93,33 @@ class BasicCalculatorTest {
     public void severalMult(Long first, Long second, Long expectedResult) {
         assertEquals(expectedResult, basicCalculator.mult(first, second),
                 () -> first + " * " + second + " should equal " + expectedResult);
+    }
+    //TEST Division
+    @Test
+    @DisplayName("Testing division: 1/1=1")
+    void div() {
+        // Arrange
+        Long number1 = 1L;
+        Long number2 = 1L;
+        Float expectedValue = 1F;
+
+        // Act
+        Float result = basicCalculator.div(number1, number2);
+
+        // Assert
+        assertEquals(expectedValue, result);
+    }
+
+    @DisplayName("Testing several divison")
+    @ParameterizedTest(name = "{0} / {1} = {2}")
+    @CsvSource({
+            "0,    1,   0",
+            "2,    2,   1",
+            "8,    2,   4",
+            "20,  2,    10"
+    })
+    public void severalDiv(Long first, Long second, Float expectedResult) {
+        assertEquals(expectedResult, basicCalculator.div(first, second),
+                () -> first + " / " + second + " should equal " + expectedResult);
     }
 }
